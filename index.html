@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodly</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Weather Stage -->
+<div class="stage">
+    <!-- Sun -->
+    <div class="sun"></div>
+
+    <!-- Title -->
+    <div class="title">MOODLY</div>
+
+    <!-- Subtitle -->
+    <div class="subtitle">BY AQEEF</div>
+
+    <!-- bouncing arrow -->
+    <img src="https://cdn0.iconfinder.com/data/icons/glyphpack/26/double-arrow-down-1024.png"
+         alt="Scroll Down"
+         class="scroll-arrow"
+         onclick="scrollToJar()" />
+
+    <!-- Clouds -->
+    <div class="cloud cloud1">
+        <div class="circle big"></div>
+        <div class="circle small"></div>
+        <div class="circle medium"></div>
+        <div class="circle large"></div>
+    </div>
+
+    <div class="cloud cloud2">
+        <div class="circle big"></div>
+        <div class="circle small"></div>
+        <div class="circle medium"></div>
+        <div class="circle large"></div>
+    </div>
+
+    <div class="cloud cloud3">
+        <div class="circle big"></div>
+        <div class="circle small"></div>
+        <div class="circle medium"></div>
+        <div class="circle large"></div>
+    </div>
+
+    <div class="cloud cloud4">
+        <div class="circle big"></div>
+        <div class="circle small"></div>
+        <div class="circle medium"></div>
+        <div class="circle large"></div>
+    </div>
+</div>
+
+<h1 class="jar-title">Jar of Reassurance</h1>
+
+<!-- Reassurance Jar Project -->
+<div class="jar-section" id="jar">
+    <!-- Left: Jar -->
+    <div class="jar-container">
+        <div class="jar" onclick="addMessage()">
+            <div class="lid"></div>
+            <div class="glass">
+                <div class="stars"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Rectangle -->
+    <div class="message-board">
+        <h2>Messages</h2>
+        <div class="messages" id="messages"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* ---------------- GLOBAL ---------------- */
+body {
+    margin: 0;
+    background: #6C8FDB;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ---------------- STAGE (SUN & CLOUDS) ---------------- */
+.stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #87CEEB;
+    overflow: hidden;
+}
+
+.sun {
+    width: 700px;
+    height: 700px;
+    background: #F4D873;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: floatSun 6s ease-in-out infinite alternate;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 112px;
+    font-weight: bold;
+    color: #2B2B2B;
+    display: flex;
+    gap: 20px;
+    animation: floatTitle 6.5s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    position: absolute;
+    top: calc(50% + 140px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 44px;
+    font-weight: 600;
+    color: #2B2B2B;
+    animation: floatSubtitle 7s ease-in-out infinite alternate;
+}
+
+.cloud {
+    position: absolute;
+    display: flex;
+    animation: floatCloud 5s ease-in-out infinite alternate;
+}
+
+.cloud1 { left: 150px; top: 490px; }
+.cloud2 { left: 1000px; top: 475px; }
+.cloud3 { left: -35px; top: 670px; }
+.cloud4 { left: 1200px; top: 645px; }
+
+.circle {
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.big { width: 400px; height: 160px; top: 20px; left: 0; background: #F0F0F0; }
+.small { width: 200px; height: 120px; top: 0; left: 30px; }
+.medium { width: 220px; height: 140px; top: -10px; left: 120px; }
+.large { width: 190px; height: 130px; top: 10px; left: 240px; }
+
+/* Scroll arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    opacity: 0.8;
+}
+
+/* ---------------- JAR PROJECT ---------------- */
+.jar-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Jar takes left half */
+.jar-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6C8FDB; /* match background or remove if you want transparent */
+}
+
+/* Title styling */
+.jar-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Jar section layout */
+.jar-section {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px); /* subtract space for title */
+    box-sizing: border-box;
+}
+
+/* Jar side */
+.jar-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6C8FDB;
+}
+
+/* Make jar bigger */
+.jar {
+    transform: scale(1.5); /* increase size */
+    transform-origin: center;
+}
+
+/* Lid */
+.lid {
+    width: 160px;
+    height: 40px;
+    background: #d19c68;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+}
+
+/* Glass body */
+.glass {
+    width: 200px;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 4px solid #ccc;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-top: -10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stars inside jar */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.star {
+    width: 32px;
+    height: 32px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%,
+    68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%, 2% 35%,
+    39% 35%);
+    transition: transform 0.2s ease;
+}
+
+.star.yellow { background: gold; }
+.star.blue   { background: #80bfff; }
+.star.pink   { background: #ff99aa; }
+
+/* Messages side */
+.message-board {
+    flex: 1;
+    border: 3px solid #555;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 0;
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+}
+
+.message-board h2 {
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.messages {
+    font-size: 14px;
+    color: #222;
+}
+
+/* Shake animation */
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 2px) rotate(0deg); }
+    20% { transform: translate(-2px, -2px) rotate(-2deg); }
+    40% { transform: translate(-2px, 2px) rotate(2deg); }
+    60% { transform: translate(2px, -2px) rotate(0deg); }
+    80% { transform: translate(2px, 2px) rotate(2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes floatSun {
+    from { transform: translate(-50%, -50%) translateY(0); }
+    to { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+@keyframes floatTitle {
+    from { transform: translate(-50%, -50%) translateY(0); }
+    to { transform: translate(-50%, -50%) translateY(-15px); }
+}
+
+@keyframes floatSubtitle {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes floatCloud {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, 15px);
+    }
+    60% {
+        transform: translate(-50%, 10px);
+    }
+}

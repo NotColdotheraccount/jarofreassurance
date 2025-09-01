@@ -364,8 +364,14 @@ if (window.DeviceMotionEvent) {
 }
 
 /* ---------------- SCROLL FUNCTION ---------------- */
+// Smooth scroll to jar section (with offset fix)
 function scrollToJar() {
-    document.getElementById("jar").scrollIntoView({
+    const jarSection = document.getElementById("jar");
+    const offset = -150; // adjust this number until it feels perfect
+    const top = jarSection.getBoundingClientRect().top + window.scrollY + offset;
+
+    window.scrollTo({
+        top: top,
         behavior: "smooth"
     });
 }

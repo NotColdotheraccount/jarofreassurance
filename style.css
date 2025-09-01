@@ -263,8 +263,8 @@ body {
 }
 
 @keyframes floatCloud {
-    from { transform: translateY(0); }
-    to { transform: translateY(-20px); }
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-20px) scale(1); }
 }
 
 @keyframes bounce {
@@ -484,28 +484,45 @@ body {
 @media (max-width: 600px) {
     /* Scale down entire stage */
     .stage {
-        transform: scale(0.7);
+        transform: scale(0.9);
         transform-origin: top center;
     }
 
-    /* Adjust overall text */
+    .sun {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Title */
     .title {
-        font-size: 1.8rem;
-        text-align: center;
+        font-size: 48px; /* smaller logo */
     }
 
     .subtitle {
-        font-size: 1rem;
-        text-align: center;
+        font-size: 24px;
+        top: calc(50% + 70px);
     }
+
+    /* Clouds */
+    .cloud-wrapper {
+        transform: scale(0.6);
+        transform-origin: top left; /* adjust as needed */
+    }
+
+    .cloud1 { left: 1500px; top: 490px; }
+    .cloud2 { left: 50px; top: 180px; }
+    .cloud3 { left: -450px; top: 180px; }
+    .cloud4 { left: 1200px; top: 645px; }
+
 
     /* Arrow */
     .scroll-arrow {
+        bottom: 200px;
         width: 40px;
         height: auto;
     }
 
-    /* Jar & Messages */
+    /* ---------------- JAR INDIVIDUAL RESIZE ---------------- */
     .jar-title {
         font-size: 1.5rem;
         margin: 15px 0;
@@ -535,10 +552,59 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Scenery (trees, house, sun, clouds) */
+    /* ---------------- SCENERY INDIVIDUAL RESIZE ---------------- */
+    /* Add some space between jar and scenery */
     .scenery-section {
-        transform: scale(0.75);
-        transform-origin: bottom center;
+        height: 220px; /* slightly taller hill area */
+        margin-top: 30px; /* push scenery down from jar */
     }
+
+    /* Lower the scenery container so house/trees sit lower */
+    .scenery-container {
+        bottom: 40px; /* increase distance from jar */
+        transform: translateX(-50%) scale(0.7);
+    }
+
+    .scenery-hill { height: 150px; }
+
+    .scenery-path { width: 80px; height: 150px; left: 55.5%; }
+
+    .scenery-container { bottom: 60px; transform: translateX(-50%) scale(0.7); }
+
+    .scenery-house { width: 180px; height: 140px; }
+    .scenery-house::before { top: -70px; left: 23px; height: 120px; width: 120px; border-top: 7px solid darkred; border-left: 7px solid darkred; }
+    .scenery-house::after { top: -50px; left: 10px; height: 50px; width: 20px; border-top: 5px solid rgba(0,0,0,0.3); }
+
+    .scenery-window { width: 50px; height: 50px; top: 20px; left: 15px; }
+    .scenery-window::before { left: 50%; width: 1px; height: 100%; }
+    .scenery-window::after { top: 50%; width: 100%; height: 1px; }
+
+    .scenery-door { width: 50px; height: 90px; top: 60px; left: 100px; }
+    .scenery-door::before { top: 50%; right: 7px; width: 5px; height: 5px; }
+
+    .scenery-flower { width: 40px; height: 40px; bottom: 0; }
+    .scenery-flower::before { left: 30px; width: 30px; height: 30px; }
+    .scenery-flower::after { left: 60px; width: 30px; height: 30px; }
+
+    /* Trees */
+    .tree { bottom: 40px; }
+    .tree-top { width: 40px; height: 40px; box-shadow: 0 -15px 0 #388e3c, 0 -30px 0 #43a047; }
+    .tree-trunk { width: 10px; height: 25px; }
+
+    .tree-tree1 { left: 5%; }
+    .tree-tree2 { right: 5%; }
+    .tree-tree3 { left: 15%; top: 20%; }
+    .tree-tree4 { right: 15%; top: 20%; }
+    .tree-tree5 { left: 25%; top: 30%; }
+    .tree-tree6 { right: 25%; }
+    .tree-tree7 { left: 37%; top: 5%; }
+    .tree-tree8 { right: 37%; top: 5%; }
+
+    /* Characters */
+    .hill-character { width: 120px; bottom: 30px; }
+
+    .character1 { left: 25%; bottom: 10%; }
+    .character2 { right: 5%; bottom: 5%; }
+    .character3 { right: 30%; width: 60px; top: 25%; }
 }
 

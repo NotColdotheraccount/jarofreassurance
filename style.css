@@ -1,7 +1,7 @@
 /* ---------------- GLOBAL ---------------- */
 body {
     margin: 0;
-    background: #6C8FDB;
+    background: #87CEEB;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -92,52 +92,50 @@ body {
 }
 
 /* ---------------- JAR PROJECT ---------------- */
-.jar-section {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-}
-
-/* Jar takes left half */
-.jar-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #6C8FDB; /* match background or remove if you want transparent */
-}
-
-/* Title styling */
 .jar-title {
     text-align: center;
-    font-size: 36px;
+    font-size: 48px;       /* bigger font size */
     font-weight: bold;
-    margin: 20px 0;
-    color: #333;
+    margin-top: 50px;      /* push down from the very top */
+    margin-bottom: 30px;   /* space before jar/message section */
+    color: white;
     font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 1.5px; /* slightly spaced letters */
+
+    /* Black outline effect */
+    text-shadow:
+            -2px -2px 0 black,
+            2px -2px 0 black,
+            -2px  2px 0 black,
+            2px  2px 0 black;
+
 }
 
-/* Jar section layout */
+/* Jar + Message layout */
 .jar-section {
     display: flex;
+    justify-content: center;   /* centers both sides */
+    align-items: center;       /* align vertically */
+    gap: 60px;                 /* space between jar & board */
     width: 100%;
-    height: calc(100vh - 80px); /* subtract space for title */
+    height: calc(100vh - 180px); /* subtract space for title */
     box-sizing: border-box;
+    background: #87CEEB;
 }
 
 /* Jar side */
 .jar-container {
-    flex: 1;
+    width: 320px;
+    height: 420px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background: #6C8FDB;
+    justify-content: center;
 }
 
 /* Make jar bigger */
 .jar {
-    transform: scale(1.5); /* increase size */
+    transform: scale(1.25);
     transform-origin: center;
 }
 
@@ -192,33 +190,51 @@ body {
 .star.blue   { background: #80bfff; }
 .star.pink   { background: #ff99aa; }
 
-/* Messages side */
+/* Message board */
 .message-board {
-    flex: 1;
-    border: 3px solid #555;
-    background: #fafafa;
+    width: 320px;
+    height: 420px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     padding: 20px;
-    border-radius: 0;
-    height: 100%;
     overflow-y: auto;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Title */
 .message-board h2 {
-    margin-top: 0;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
     text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 6px;
 }
 
-.messages {
+/* Messages */
+.messages div {
+    background: #f1f5ff;
+    border-left: 4px solid #F4D873;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 6px 0;
     font-size: 14px;
     color: #222;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+.messages div:hover {
+    background: #e6edff;
+    transform: translateX(5px);
 }
 
 /* Shake animation */
 .shake {
     animation: shake 0.4s;
 }
+
 
 @keyframes shake {
     0% { transform: translate(2px, 2px) rotate(0deg); }
@@ -261,3 +277,206 @@ body {
         transform: translate(-50%, 10px);
     }
 }
+
+/* ---------------- SCENERY (Hill & House) ---------------- */
+.scenery-section {
+    width: 100%;
+    height: calc(100vh - 150px); /* subtract space for title */
+    background: #87CEEB;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.scenery-hill {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: #3E7C59;
+    border-top-left-radius: 50% 100px;
+    border-top-right-radius: 50% 100px;
+    z-index: 1;   /* hill sits behind */
+}
+
+.scenery-path {
+    position: absolute;
+    bottom: 0;
+    left: 53.5%;
+    width: 120px;
+    height: 250px;
+    background: #D2B48C;
+    transform: translateX(-50%);
+    clip-path: polygon(40% 0, 60% 0, 100% 100%, 0% 100%);
+}
+
+.scenery-container {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;   /* house sits above */
+}
+
+/* House */
+.scenery-house {
+    height: 200px;
+    width: 260px;
+    background: #FFF;
+    position: relative;
+}
+.scenery-house::before {
+    content: '';
+    position: absolute;
+    top: -95px;
+    left: 33px;
+    height: 183px;
+    width: 183.5px;
+    background: white;
+    transform: rotate(45deg);
+    border-top: 10px solid darkred;
+    border-left: 10px solid darkred;
+    z-index: 2;
+}
+.scenery-house::after {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: 15px;
+    height: 70px;
+    width: 30px;
+    background: darkred;
+    z-index: 1;
+    border-top: 7px solid rgba(0, 0, 0, .3);
+}
+
+.scenery-window {
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    height: 80px;
+    width: 70px;
+    background: #96ebff;
+    border-top: 7px solid darkred;
+}
+.scenery-window::before,
+.scenery-window::after {
+    content: '';
+    position: absolute;
+    background: silver;
+}
+.scenery-window::before {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 1px;
+}
+.scenery-window::after {
+    top: 50%;
+    height: 1px;
+    width: 100%;
+}
+
+.scenery-door {
+    position: absolute;
+    top: 70px;
+    left: 150px;
+    height: 130px;
+    width: 70px;
+    background: darkred;
+}
+.scenery-door::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    border: 1px solid #FFF;
+    background: #96ebff;
+}
+
+.scenery-flower {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 60px;
+    background: green;
+    border-radius: 30px 30px 3px 0;
+    box-shadow: 1px -1px 7px rgba(0, 0, 0, .5);
+}
+.scenery-flower::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    height: 40px;
+    width: 50px;
+    background: green;
+    border-radius: 50% 50% 0 0;
+}
+.scenery-flower::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 80px;
+    height: 40px;
+    width: 50px;
+    background: green;
+    border-radius: 50% 50% 15% 0;
+}
+
+.scenery-window,
+.scenery-door {
+    position: absolute;   /* already absolute, safe to repeat */
+    z-index: 3;           /* higher than the roof */
+}
+
+/* Trees */
+.tree {
+    position: absolute;
+    bottom: 60px; /* sits on hill */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2; /* above hill */
+}
+
+.tree-tree1 { left: 10%; }
+.tree-tree2 { right: 10%; }
+.tree-tree3 { left: 20%; top: 20%; }
+.tree-tree4 { right: 20%; top: 20%; }
+.tree-tree5 { left: 30%; top: 30%; }
+.tree-tree6 { right: 30%; }
+.tree-tree7 { left: 37%; top: 5%; }
+.tree-tree8 { right: 37%; top: 5%; }
+
+.tree-top {
+    width: 60px;
+    height: 60px;
+    background: #2e7d32;
+    border-radius: 50%;
+    box-shadow: 0 -25px 0 #388e3c, 0 -50px 0 #43a047;
+}
+
+.tree-trunk {
+    width: 14px;
+    height: 40px;
+    background: #5d4037;
+    margin-top: -10px;
+    border-radius: 3px;
+}
+/* Characters */
+.hill-character {
+    position: absolute;
+    bottom: 60px;   /* sit on the hill */
+    width: 200px;
+    z-index: 3;
+}
+
+.character1 { left: 18%; bottom: 10%; }
+.character2 { right: 20%; }
+.character3 { right: 40%; width: 100px}
+
+

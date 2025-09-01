@@ -480,4 +480,65 @@ body {
 .character2 { right: 20%; }
 .character3 { right: 40%; width: 100px}
 
+/* ---------------- FULL MOBILE RESIZE ---------------- */
+@media (max-width: 600px) {
+    /* Scale down entire stage */
+    .stage {
+        transform: scale(0.7);
+        transform-origin: top center;
+    }
+
+    /* Adjust overall text */
+    .title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Arrow */
+    .scroll-arrow {
+        width: 40px;
+        height: auto;
+    }
+
+    /* Jar & Messages */
+    .jar-title {
+        font-size: 1.5rem;
+        margin: 15px 0;
+    }
+
+    .jar-section {
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .jar-container {
+        transform: scale(0.8);
+        margin-bottom: 20px;
+    }
+
+    .message-board {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .message-board h2 {
+        font-size: 1.2rem;
+    }
+
+    .messages {
+        font-size: 0.9rem;
+    }
+
+    /* Scenery (trees, house, sun, clouds) */
+    .scenery-section {
+        transform: scale(0.75);
+        transform-origin: bottom center;
+    }
+}
 
